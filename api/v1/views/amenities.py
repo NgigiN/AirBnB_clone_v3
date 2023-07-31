@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Contains the amenities view for the API.'''
+'''Contains amenities for  API.'''
 from flask import jsonify, request
 from werkzeug.exceptions import NotFound, MethodNotAllowed, BadRequest
 
@@ -15,7 +15,7 @@ ALLOWED_METHODS = ['GET', 'DELETE', 'POST', 'PUT']
 @app_views.route('/amenities', methods=ALLOWED_METHODS)
 @app_views.route('/amenities/<amenity_id>', methods=ALLOWED_METHODS)
 def handle_amenities(amenity_id=None):
-    '''The method handler for the amenities endpoint.
+    '''The method handler for the endpoint.
     '''
     handlers = {
         'GET': get_amenities,
@@ -43,7 +43,7 @@ def get_amenities(amenity_id=None):
 
 
 def remove_amenity(amenity_id=None):
-    '''Removes a amenity with the given id.
+    '''Removes a amenity of a given id.
     '''
     all_amenities = storage.all(Amenity).values()
     res = list(filter(lambda x: x.id == amenity_id, all_amenities))
@@ -55,7 +55,7 @@ def remove_amenity(amenity_id=None):
 
 
 def add_amenity(amenity_id=None):
-    '''Adds a new amenity.
+    '''Adds new amenity.
     '''
     data = request.get_json()
     if type(data) is not dict:
@@ -68,7 +68,7 @@ def add_amenity(amenity_id=None):
 
 
 def update_amenity(amenity_id=None):
-    '''Updates the amenity with the given id.
+    '''Updates amenity of a given id.
     '''
     xkeys = ('id', 'created_at', 'updated_at')
     all_amenities = storage.all(Amenity).values()
