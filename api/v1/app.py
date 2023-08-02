@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# import storage from models
+"""Flask app to handle api for AirBnB clone"""
 
 from models import storage
 from api.v1.views import app_views
@@ -16,6 +16,7 @@ CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 
 @app.teardown_appcontext
 def teardown_appcontest(self):
+    """teardown app context"""
     storage.close()
 
 
